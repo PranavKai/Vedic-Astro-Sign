@@ -2,10 +2,23 @@ import os
 import sys
 import subprocess
 
+# Print Python path and installed packages for debugging
+print("Python path:", sys.path)
+
+# Function to list installed packages
+def list_installed_packages():
+    installed_packages = subprocess.check_output([sys.executable, '-m', 'pip', 'freeze']).decode('utf-8')
+    print("Installed packages:\n", installed_packages)
+
+# List installed packages
+list_installed_packages()
+
 # Install swisseph if not already installed
 try:
     import swisseph as swe
+    print("Swisseph module found!")
 except ImportError:
+    print("Swisseph module not found. Installing...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", "swisseph==0.0.0.dev1"])
     import swisseph as swe
 
