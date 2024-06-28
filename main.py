@@ -1,8 +1,18 @@
+import os
+import sys
+import subprocess
+
+# Install swisseph if not already installed
+try:
+    import swisseph as swe
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "swisseph==0.0.0.dev1"])
+    import swisseph as swe
+
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-import swisseph as swe
 import datetime
 
 app = FastAPI()
