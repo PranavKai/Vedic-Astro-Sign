@@ -1,4 +1,4 @@
 fastapi
 uvicorn
 pydantic
-swisseph
+swisseph==0.0.0.dev1
